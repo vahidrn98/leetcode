@@ -1,5 +1,6 @@
+import math
 class Solution:
-    def wiggleSort(self, nums: List[int]) -> None:
+    def wiggleSort(self, nums):
         """
         Do not return anything, modify nums in-place instead.
         """
@@ -21,6 +22,3 @@ class Solution:
             if j<len(nums):
                 nums[j] = b
                 j+=2
-            
-        
-        
