@@ -21,6 +21,3 @@ class Solution:
                     if(str1 == c*(n1//(i+1))):
                         largest = str2[:i+1]
         return largest
-
-
-        
