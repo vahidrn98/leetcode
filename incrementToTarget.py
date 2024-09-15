@@ -31,9 +31,6 @@ def myMin(A):
       
 
 def solution(A):
-  sys.stderr.write(
-      'Tip: Use sys.stderr.write() to write debug messages on the output tab.\n'
-  )
   steps = 0
   sumA = sum(A)
   while(sumA>0):
