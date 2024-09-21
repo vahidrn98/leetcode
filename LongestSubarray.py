@@ -13,10 +13,12 @@ class Solution:
                 ones+=1
                 max_ones = max(ones,max_ones)
             else:
+                
                 if(zeros==0):
                     zeros+=1
                     deleted = True
                 else:
+                    zeros+=1
                     if(nums[i]==0):
                         zeros-=1
                     else:
