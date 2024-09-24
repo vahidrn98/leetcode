@@ -5,17 +5,15 @@ class Solution:
         dist = []
         ans = []
         for p in points:
-            dist.append(p[0]**2+p[1]**2)
-        h = dist.copy()
-        h.sort()
-        j = -1
-        for i in range(k):
-            el = h[i]
-            j = dist[j+1:].index(el)
-            ans.append(points[j])
+            dist.append([p[0]**2+p[1]**2,p[0],p[1]])
+        
+        dist.sort()
+        ans = []
+        i = 1
+        for d in dist:
+            if(i>k):
+                break
+            ans.append([d[1],d[2]])
+            i+=1
 
         return ans
-
-        
-
-        
