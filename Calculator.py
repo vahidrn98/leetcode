@@ -1,63 +1,29 @@
 class Solution:
     def calculate(self, s: str) -> int:
 
+        number =0
+        sign = 1
         stack = []
+        result = 0
 
         for c in s:
-            if(c==" "):
-                continue
-
             if(c.isnumeric()):
-                if(stack):
-                    prev = stack[-1]
-                    if(prev !="("):
-                        op = stack.pop()
-                        match op:
-                            case "+":
-                                a = stack.pop()
-                                b = c
-                                r = int(a) + int(b)
-                                stack.append(str(r))
-                            case "-":
-                                a = stack.pop()
-                                b = c
-                                r = int(a) - int(b)
-                                stack.append(str(r))
-                    else:
-                        stack.append(c)
-                else:
-                    stack.append(c)
-            elif(c=="(" or c=="+" or c=="-"):
-                stack.append(c)
-            else:
-                current = c
-                while(current!="("):
-                    b = stack.pop()
-                    x = stack.pop()
-                    if(x=="("):
-                        stack.append(b)
-                        break
-                    else:
-                        a = stack.pop()
-                        if(a=="("):
-                            if(x=="-"):
-                                stack.append(x)
-                                stack.append(b)
-                            break
-                        else:
-                            match x:
-                                case "+":
-                                    r = int(a) + int(b)
-                                    stack.append(str(r))
-                                case "-":
-                                    r = int(a) - int(b)
-                                    stack.append(str(r))
-
-        return int(stack.pop())
-                    
-
-
-
-
-
+                number = number*10 + int(c)
+            elif(c in "+-"):
+                result +=number *sign
+                sign = -1 if c=="-" else 1
+                number = 0
+            elif(c=="("):
+                stack.append(result)
+                stack.append(sign)
+                result = 0
+                sign = 1
+            elif(c==")"):
+                result += sign*number
+                result *= stack.pop()
+                result += stack.pop()
+                number = 0
+            
         
+
+        return result + sign*number
